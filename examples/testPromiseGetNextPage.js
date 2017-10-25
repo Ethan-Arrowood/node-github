@@ -1,4 +1,4 @@
-var Client = require('./../lib/index')
+const GitHubApi = require('github')
 
 var gh = new Client({
   Promise: require('bluebird')
