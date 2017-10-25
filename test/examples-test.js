@@ -28,6 +28,11 @@ process.on('unhandledRejection', (error) => {
     return
   }
 
+  if (/getaddrinfo ENOTFOUND github.my-GHE-enabled-company.com/.test(error.message)) {
+    // expected error from enterpriseUploadAsset, ignore
+    return
+  }
+
   console.log(error)
   process.exit(1)
 })
