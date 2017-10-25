@@ -1,9 +1,9 @@
-'use strict'
 
-var Client = require('./../lib/index')
+
+const GitHubApi = require('github')
 var Promise = require('bluebird')  // npm install bluebird
 
-var github = new Client({
+const github = new GitHubApi({
   debug: false,
   Promise: Promise
 })

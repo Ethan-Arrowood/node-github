@@ -1,9 +1,9 @@
-'use strict'
 
-var Client = require('./../lib/index')
+
+const GitHubApi = require('github')
 var Q = require('q')  // npm install q
 
-var github = new Client({
+const github = new GitHubApi({
   debug: false,
   Promise: Q.Promise
 })

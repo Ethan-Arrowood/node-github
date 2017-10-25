@@ -1,7 +1,7 @@
-'use strict'
 
-var Client = require('./../lib/index')
-var github = new Client({
+
+const GitHubApi = require('github')
+const github = new GitHubApi({
   debug: true
 })
 
