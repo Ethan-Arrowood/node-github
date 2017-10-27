@@ -1,5 +1,3 @@
-
-
 const GitHubApi = require('github')
 
 const github = new GitHubApi({
@@ -11,5 +9,6 @@ github.repos.getContent({
   repo: 'node-github',
   path: ''
 }, function (err, res) {
-  console.log(err, res)
+  //console.log(err, res)
+  console.log("Error thrown in getContent.js");
 })

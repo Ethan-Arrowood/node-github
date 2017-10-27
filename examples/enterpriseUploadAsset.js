@@ -5,11 +5,6 @@ const github = new GitHubApi({
   pathPrefix: '/api/v3'
 })
 
-github.authenticate({
-  type: 'oauth',
-  token: 'add-your-real-token-here'
-})
-
 github.repos.uploadAsset({
   owner: 'foo-organization',
   repo: 'bar-repository',

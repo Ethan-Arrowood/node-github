@@ -1,8 +1,6 @@
 const GitHubApi = require('github')
 
-var gh = new Client({
-  Promise: require('bluebird')
-})
+var gh = new GitHubApi();
 
 function getAllOrgRepos (orgName) {
   var repos = []

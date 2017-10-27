@@ -3,11 +3,6 @@ const github = new GitHubApi({
   debug: true
 })
 
-github.authenticate({
-  type: 'oauth',
-  token: 'add-your-real-token-here'
-})
-
 github.repos.createStatus({
   owner: 'octokit',
   repo: 'node-github',

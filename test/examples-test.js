@@ -10,7 +10,17 @@ const examplesPaths = glob.sync('*.js', {
 })
 
 // examplesPaths.forEach(runExample)
-;['enterpriseUploadAsset'].forEach(runExample)
+const paths = [
+  'addCollaborator',
+  'addLabelsToIssue',
+  'createFile.js',
+  'createStatus.js',
+  'enterpriseUploadAsset',
+  'getContent.js',
+  'getFollowers.js'
+];
+
+paths.forEach(path => runExample(path))
 
 function runExample (name) {
   proxyquire(`../examples/${name}`, {
@@ -25,6 +35,12 @@ function runExample (name) {
 process.on('unhandledRejection', (error) => {
   if (error.code === 401) {
     // this is due to our invalid authentication token, so we ignore it
+    return
+  }
+
+  if (error.code === 403) {
+    // when API rate limit is reached 403 Forbidden is thrown
+    // Known files: addCollaborator.js, getContent.js
     return
   }
 
