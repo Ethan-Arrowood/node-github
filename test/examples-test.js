@@ -1,5 +1,8 @@
 const pathResolve = require('path').resolve
 
+// load process.env.GH_TOKEN from .env file
+require('dotenv').config()
+
 const glob = require('glob')
 const proxyquire = require('proxyquire').noCallThru()
 
@@ -9,25 +12,35 @@ const examplesPaths = glob.sync('*.js', {
   cwd: pathResolve(process.cwd(), 'examples')
 })
 
-// examplesPaths.forEach(runExample)
-const paths = [
-  'addCollaborator',
-  'addLabelsToIssue',
-  'createFile.js',
-  'createStatus.js',
-  'enterpriseUploadAsset',
-  'getContent.js',
-  'getFollowers.js'
-];
+examplesPaths.forEach(runExample)
 
-paths.forEach(path => runExample(path))
+// ;[
+//   'addCollaborator',
+//   'addLabelsToIssue',
+//   'createFile.js',
+//   'createStatus.js',
+//   'enterpriseUploadAsset',
+//   'getContent.js',
+//   'getFollowers.js'
+// ].forEach(path => runExample(path))
 
 function runExample (name) {
   proxyquire(`../examples/${name}`, {
     'github': function (options) {
       if (!options) options = {}
       options.debug = false
-      return new GitHubApi(options)
+      const github = new GitHubApi(options)
+
+      // set a GH_TOKEN environment variable to avoid running against
+      // GitHub's rate limiting
+      if (process.env.GH_TOKEN) {
+        github.authenticate({
+          type: 'token',
+          token: process.env.GH_TOKEN
+        })
+      }
+
+      return github
     }
   })
 }
