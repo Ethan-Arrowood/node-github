@@ -161,22 +161,6 @@ github.authorization.create({
 })
 ```
 
-## Create test auth file
-
-Create test auth file for running tests/examples.
-
-```bash
-$ > testAuth.json
-{
-    "token": "<TOKEN>"
-}
-```
-
-## Promises
-
-For using bluebird, see [here](https://github.com/octokit/node-github/blob/master/examples/testPromise.js).
-For using Q, see [here](https://github.com/octokit/node-github/blob/master/examples/testPromiseQ.js).
-
 ## Tests
 
 Run all tests
@@ -188,8 +172,11 @@ $ npm test
 Or run a specific test
 
 ```bash
-$ npm test test/issuesTest.js
+$ ./node_modules/.bin/mocha test/test/integration/get-repository-test.js
 ```
+
+The examples are run as part of the tests. You can set an `GH_TOKEN` environment
+variable (or set it in a `.env` file) to avoid running against GitHub's rate limit.
 
 ## Preview APIs
 
