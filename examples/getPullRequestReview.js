@@ -1,32 +1,14 @@
-
-
 const GitHubApi = require('github')
-
 
 const github = new GitHubApi({
   debug: true
 })
 
-github.authenticate({
-  type: 'oauth',
-  token: 'add-your-real-token-here'
-})
-
-github.pullRequests.getReviews({
-  owner: 'brassafrax',
-  repo: 'test',
-  number: 1
-}, function (err, res) {
-  if (err) throw err
-
-  var reviewId = res[0]['id']
-  github.pullRequests.getReview({
-    owner: 'brassafrax',
-    repo: 'test',
-    number: 1,
-    id: reviewId
-  }, function (err, res) {
-    if (err) throw err
-    console.log(res)
-  })
+const reviewId = 'abcde'
+github.pullRequests.getReview({
+  owner: 'octoki',
+  repo: 'node-github',
+  number: 1,
+  id: reviewId,
+  required_pull_request_reviews: true
 })

@@ -1,14 +1,6 @@
-
-
 const GitHubApi = require('github')
 
-
 const github = new GitHubApi({})
-
-github.authenticate({
-  type: 'oauth',
-  token: 'add-your-real-token-here'
-})
 
 github.repos.getAll({
   'affiliation': 'owner,organization_member'

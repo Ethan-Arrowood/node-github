@@ -1,14 +1,6 @@
-
-
 const GitHubApi = require('github')
 
-
 const github = new GitHubApi({})
-
-github.authenticate({
-  type: 'oauth',
-  token: 'add-your-real-token-here'
-})
 
 var starredRepos = []
 
@@ -27,6 +19,7 @@ function getRepos (err, res) {
 }
 
 function outputStarredRepos () {
-  console.log(starredRepos.map(function (repo) { return repo['full_name'] }))
-  console.log('starred repos: ' + starredRepos.length)
+  // console.log(starredRepos.map(function (repo) { return repo['full_name'] }))
+  // console.log('starred repos: ' + starredRepos.length)
+
 }

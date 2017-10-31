@@ -1,6 +1,6 @@
 const GitHubApi = require('github')
 
-var gh = new GitHubApi();
+var gh = new GitHubApi()
 
 function getAllOrgRepos (orgName) {
   var repos = []

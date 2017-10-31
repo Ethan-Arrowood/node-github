@@ -53,7 +53,6 @@ process.on('unhandledRejection', (error) => {
 
   if (error.code === 403) {
     // when API rate limit is reached 403 Forbidden is thrown
-    // Known files: addCollaborator.js, getContent.js
     return
   }
 

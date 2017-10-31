@@ -1,20 +1,12 @@
-
-
 const GitHubApi = require('github')
-
 
 const github = new GitHubApi({
   debug: true
 })
 
-github.authenticate({
-  type: 'oauth',
-  token: 'add-your-real-token-here'
-})
-
 var testRepo = {
-  owner: 'aktau',
-  repo: 'github-release'
+  owner: 'octokit',
+  repo: 'node-github'
 }
 
 github.repos.getReleases({
@@ -28,7 +20,6 @@ github.repos.getReleases({
   }
   var release = releases[0]
   var releaseId = release.id
-  console.log(release)
 
   github.repos.getAssets({
     owner: testRepo.owner,
@@ -42,7 +33,6 @@ github.repos.getReleases({
     }
     var asset = assets[0]
     var assetId = asset.id
-    console.log(asset)
 
     github.repos.getAsset({
       owner: testRepo.owner,
@@ -51,9 +41,6 @@ github.repos.getReleases({
       // headers: {
       //     "Accept": "application/octet-stream"
       // }
-    }, function (err, res) {
-      if (err) throw err
-      console.log(res)
     })
   })
 })
