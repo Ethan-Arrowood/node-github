@@ -9,5 +9,7 @@ github.repos.updateBranchProtection({
   repo: 'node-github',
   branch: 'a',
   required_status_checks: null,
-  restrictions: null
+  restrictions: null,
+  required_pull_request_reviews: null,
+  enforce_admins: false
 })
