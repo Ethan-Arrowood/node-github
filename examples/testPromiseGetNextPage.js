@@ -7,12 +7,13 @@ var github = new GitHubApi({
 function getAllOrgRepos (orgName) {
   var repos = []
 
-  function pager (res) {
-    repos = repos.concat(res)
-    if (github.hasNextPage(res)) {
-      return github.getNextPage(res)
-        .then(pager)
+  function pager (result) {
+    repos = repos.concat(result.data)
+
+    if (github.hasNextPage(result)) {
+      return github.getNextPage(result).then(pager)
     }
+
     return repos
   }
 
@@ -20,7 +21,7 @@ function getAllOrgRepos (orgName) {
     .then(pager)
 }
 
-getAllOrgRepos('organization')
-  .then(function (orgRepos) {
-    console.log(orgRepos)
+getAllOrgRepos('github')
+  .then((orgRepos) => {
+    // orgRepos is array of all repositories meta data
   })
