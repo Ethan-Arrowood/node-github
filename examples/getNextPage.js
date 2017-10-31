@@ -8,14 +8,16 @@ github.repos.getAll({
   owner: 'octokit',
   repo: 'node-github',
   affiliation: 'owner,organization_member'
-}, function (err, res) {
-  if (err) throw err
-  if (github.hasNextPage(res)) {
-    github.getNextPage(res, nextFunc)
+})
+
+.then(result => {
+  if (github.hasNextPage(result)) {
+    return github.getNextPage(result)
+
+    .then(logResultLength)
   }
 })
 
-function nextFunc (err, res) {
-  if (err) throw err
-  console.log(res.data.length)
+function logResultLength (result) {
+  console.log(result.data.length)
 }
