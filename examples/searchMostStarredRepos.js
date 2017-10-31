@@ -1,7 +1,7 @@
 const GitHubApi = require('github')
 
 const github = new GitHubApi({
-    // debug: true
+  debug: true
 })
 
 github.search.repos({

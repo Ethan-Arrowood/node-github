@@ -1,20 +1,22 @@
 const GitHubApi = require('github')
 
-var gh = new GitHubApi()
+var github = new GitHubApi({
+  debug: true
+})
 
 function getAllOrgRepos (orgName) {
   var repos = []
 
   function pager (res) {
     repos = repos.concat(res)
-    if (gh.hasNextPage(res)) {
-      return gh.getNextPage(res)
+    if (github.hasNextPage(res)) {
+      return github.getNextPage(res)
         .then(pager)
     }
     return repos
   }
 
-  return gh.repos.getForOrg({ org: orgName })
+  return github.repos.getForOrg({ org: orgName })
     .then(pager)
 }
 

@@ -38,9 +38,6 @@ github.repos.getReleases({
       owner: testRepo.owner,
       repo: testRepo.repo,
       id: assetId
-      // headers: {
-      //     "Accept": "application/octet-stream"
-      // }
     })
   })
 })

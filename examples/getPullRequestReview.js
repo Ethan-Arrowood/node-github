@@ -6,9 +6,8 @@ const github = new GitHubApi({
 
 const reviewId = 'abcde'
 github.pullRequests.getReview({
-  owner: 'octoki',
+  owner: 'octokit',
   repo: 'node-github',
   number: 1,
-  id: reviewId,
-  required_pull_request_reviews: true
+  id: reviewId
 })

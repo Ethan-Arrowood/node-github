@@ -14,16 +14,6 @@ const examplesPaths = glob.sync('*.js', {
 
 examplesPaths.forEach(runExample)
 
-// ;[
-//   'addCollaborator',
-//   'addLabelsToIssue',
-//   'createFile.js',
-//   'createStatus.js',
-//   'enterpriseUploadAsset',
-//   'getContent.js',
-//   'getFollowers.js'
-// ].forEach(path => runExample(path))
-
 function runExample (name) {
   proxyquire(`../examples/${name}`, {
     'github': function (options) {
